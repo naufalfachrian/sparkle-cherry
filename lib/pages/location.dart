@@ -20,12 +20,6 @@ class LocationPageState extends State<LocationPage> {
 
   var error;
 
-  StreamSubscription<Map<String,double>> _locationSubscription;
-
-  String latitude() {
-    return currentLocation['latitude'].toString();
-  }
-
   @override
   void initState() {
     super.initState();
@@ -58,7 +52,10 @@ class LocationPageState extends State<LocationPage> {
         ),),
       ),
       body: new Center(
-        child: new Text(latitude() == null ? 'Please waite ...' : 'lat: ' + latitude(),
+        child: new Text(currentLocation == null
+            ? 'Please waite ...'
+            : 'lat: ' + currentLocation['latitude'].toString() + '\n'
+            + 'lon: ' + currentLocation['longitude'].toString(),
           style: new TextStyle(
             fontFamily: 'Delius'
           ),
