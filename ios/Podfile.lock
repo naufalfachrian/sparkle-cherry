@@ -2,20 +2,26 @@ PODS:
   - Flutter (1.0.0)
   - image_picker (0.0.1):
     - Flutter
+  - location (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `Pods/.symlinks/flutter/ios`)
+  - Flutter (from `Pods/.symlinks/flutter/ios-release`)
   - image_picker (from `Pods/.symlinks/plugins/image_picker-0.2.1/ios`)
+  - location (from `Pods/.symlinks/plugins/location-1.1.7/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: Pods/.symlinks/flutter/ios
+    :path: Pods/.symlinks/flutter/ios-release
   image_picker:
     :path: Pods/.symlinks/plugins/image_picker-0.2.1/ios
+  location:
+    :path: Pods/.symlinks/plugins/location-1.1.7/ios
 
 SPEC CHECKSUMS:
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
   image_picker: a211f28b95a560433c00f5cd3773f4710a20404d
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
 
 PODFILE CHECKSUM: 0420ab312a523ae0eecfb1fc19ea51dd82cc17c7
 

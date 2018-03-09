@@ -9,6 +9,7 @@ import 'package:sparkle_cherry/pages/html_parser.dart';
 import 'package:sparkle_cherry/pages/feed.dart';
 import 'package:sparkle_cherry/pages/how_many_widgets.dart';
 import 'package:sparkle_cherry/pages/image_picker.dart';
+import 'package:sparkle_cherry/pages/location.dart';
 
 class GalleryItem extends StatelessWidget {
 
@@ -97,6 +98,13 @@ List<GalleryItem> _createGalleryItem() {
       routeName: ImagePickerPage.routeName,
       buildRoute: (context) => new ImagePickerPage(),
       iconData: Icons.add_a_photo,
+    ),
+    new GalleryItem(
+      title: 'Location',
+      description: 'We are trying to use GPS to detect your location.',
+      routeName: LocationPage.routeName,
+      buildRoute: (context) => new LocationPage(),
+      iconData: Icons.location_on,
     )
   ];
 }
