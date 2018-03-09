@@ -36,7 +36,7 @@ class ImagePickerPageState extends State<ImagePickerPage> {
       ),
       body: new Center(
         child: imagefile == null
-          ? new Text('Please select image first')
+          ? new Text('Please select image first', style: new TextStyle(fontFamily: 'Delius'),)
           : new Image.file(imagefile),
       ),
       floatingActionButton: new FloatingActionButton(
