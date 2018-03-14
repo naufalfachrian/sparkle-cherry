@@ -15,7 +15,7 @@ class FeedPage extends StatefulWidget {
 }
 
 class FeedPageState extends State<FeedPage> {
-  
+
   List<FeedItem> items = new List();
 
   int _page = 1;
@@ -31,9 +31,21 @@ class FeedPageState extends State<FeedPage> {
     fetch();
   }
 
-  void fetch() {
+  Future<Null> refresh() {
+    _page = 1;
+    _isFetching = false;
+    client.close();
+    client = new http.Client();
+    setState(() {
+      items.clear();
+    });
+    return fetch();
+  }
+
+  Future<Null> fetch() {
+    final Completer<Null> completer = new Completer<Null>();
     if (_isFetching) {
-      return;
+      completer.complete(null);
     }
     _isFetching = true;
     new Timer(new Duration(milliseconds: 1500), () async {
@@ -60,8 +72,10 @@ class FeedPageState extends State<FeedPage> {
         }
       }).then((_) {
         _isFetching = false;
+        completer.complete(null);
       });
     });
+    return completer.future;
   }
 
   @override
@@ -78,20 +92,23 @@ class FeedPageState extends State<FeedPage> {
       appBar: new AppBar(title: new Text('Feed', style: new TextStyle(fontFamily: 'Itim'),),),
       body: new Container(
         decoration: new BoxDecoration(color: new Color.fromARGB(255, 224, 224, 224)),
-        child: new ListView.builder(itemBuilder: (buildContext, index) {
-          if (index == items.length) {
-            return new Padding(padding: new EdgeInsets.all(24.0),
-              child: new Center(
-                child: new CircularProgressIndicator(),
-              ));
-          }
-          if (index == items.length - 1) {
-            _page = _page + 1;
-            fetch();
-          }
-          return items[index];
-        }, itemCount: items.length + 1,),
-      )
+        child: new RefreshIndicator(
+          child: new ListView.builder(itemBuilder: (buildContext, index) {
+            if (index == items.length) {
+              return new Padding(padding: new EdgeInsets.all(24.0),
+                child: new Center(
+                  child: new CircularProgressIndicator(),
+                ));
+            }
+            if (index == items.length - 1) {
+              _page = _page + 1;
+              fetch();
+            }
+            return items[index];
+          }, itemCount: items.length + 1,),
+          onRefresh: refresh
+        ),
+      ),
     );
   }
   
