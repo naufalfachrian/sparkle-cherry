@@ -10,6 +10,7 @@ import 'package:sparkle_cherry/pages/feed.dart';
 import 'package:sparkle_cherry/pages/how_many_widgets.dart';
 import 'package:sparkle_cherry/pages/image_picker.dart';
 import 'package:sparkle_cherry/pages/location.dart';
+import 'package:sparkle_cherry/pages/native_call.dart';
 
 class GalleryItem extends StatelessWidget {
 
@@ -105,7 +106,14 @@ List<GalleryItem> _createGalleryItem() {
       routeName: LocationPage.routeName,
       buildRoute: (context) => new LocationPage(),
       iconData: Icons.location_on,
-    )
+    ),
+    new GalleryItem(
+      title: 'Native Call',
+      description: 'We are trying to call a native function from Flutter app.',
+      routeName: NativeCallPage.routeName,
+      buildRoute: (context) => new NativeCallPage(),
+      iconData: Icons.nature,
+    ),
   ];
 }
 
