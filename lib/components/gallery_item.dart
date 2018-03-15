@@ -11,6 +11,7 @@ import 'package:sparkle_cherry/pages/how_many_widgets.dart';
 import 'package:sparkle_cherry/pages/image_picker.dart';
 import 'package:sparkle_cherry/pages/location.dart';
 import 'package:sparkle_cherry/pages/native_call.dart';
+import 'package:sparkle_cherry/pages/native_qr_scanner.dart';
 
 class GalleryItem extends StatelessWidget {
 
@@ -114,6 +115,13 @@ List<GalleryItem> _createGalleryItem() {
       buildRoute: (context) => new NativeCallPage(),
       iconData: Icons.nature,
     ),
+    new GalleryItem(
+      title: 'Qr Scanner',
+      description: 'A simple QR scanner.',
+      routeName: NativeQrScannerPage.routeName,
+      buildRoute: (context) => new NativeQrScannerPage(),
+      iconData: Icons.crop_free,
+    )
   ];
 }
 
